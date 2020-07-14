@@ -1,0 +1,139 @@
+html,body,main{
+    height: 100%;
+}
+
+html,body,ul,li{
+    padding: 0;
+    margin: 0;
+}
+
+li{
+    list-style: none;
+}
+
+a{
+    text-decoration: none;
+}
+a,a:active, a:visited{
+    color: blue;
+}
+
+button{
+    border: none;
+    background-color: #fff;
+}
+
+body{
+    background-color: #eaeaea;
+}
+
+main{
+    display: flex;
+}
+
+aside{
+    width: 300px;
+    background-color: #fff;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+}
+
+.aside ul{
+    padding:20px;
+}
+
+.aside ul li{
+    padding: 5px 0;
+}
+
+.aside ul li a{
+    color: #000;
+}
+
+.indexAside .top{
+    height: 200px;
+    background-color: rgb(165, 71, 4);
+}
+
+.indexAside .bottom{
+    position: relative;
+    padding-top:75px ;
+}
+
+.indexAside .bottom .photo{
+    height: 150px;
+    width: 150px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 1px solid green;
+    position: absolute;
+    left: 75px;
+    top: -75px;
+}
+
+.indexAside .bottom .author{
+    text-align:  center;
+    margin-top: 50px;
+}
+
+.container{
+    margin-left: 300px;
+    flex:1;
+    padding:50px;
+    padding-top: 20px;
+}
+
+.menu{
+    height: 30px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.menu-item{
+    padding: 0 10px;
+}
+
+.article{
+    padding: 5%;
+    background-color: #fff;
+    border-color: #d1d1d1;
+    margin-bottom: 40px;
+}
+.article-header{
+    display: flex;
+    justify-content: space-between;
+}
+
+.article-date{
+    color: #666;
+    align-self: center;
+}
+
+.article-content{
+    /* height: 280px; */
+    /* overflow: hidden; */
+}
+
+.article-more{
+    color: blue;
+    padding: 10px 0;
+    font-size: 18px;
+}
+
+.article-footer{
+    text-align: right;
+    border-top: 1px solid #ccc;
+    padding-top: 20px;
+    margin-top: 10px;
+}
+
+.article-footer a{
+    background-color: #4d4d4d;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 2px;
+    /* cursor: pointer; */
+}
