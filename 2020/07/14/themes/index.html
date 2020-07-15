@@ -149,6 +149,17 @@ theme: themes name </code></pre>
 </tr>
 </tbody></table>
 <h4 id="5-资源文件夹"><a href="#5-资源文件夹" class="headerlink" title="5. 资源文件夹"></a>5. 资源文件夹</h4><p><code>source</code>文件夹中除了文章以外的所有资源，如图片、css、js等，<br>如图a.jpg在<code>images</code>中使用 <code>(/images/a.jpg)</code></p>
+<h4 id="6-字体图标"><a href="#6-字体图标" class="headerlink" title="6. 字体图标"></a>6. 字体图标</h4><p>图标库下载图标，放入source/lib。</p>
+<pre><code class="html">&lt;%- css(&#39;/lib/iconfont/iconfont.css&#39;) %&gt; </code></pre>
+<h4 id="7-引入highlight"><a href="#7-引入highlight" class="headerlink" title="7. 引入highlight"></a>7. 引入highlight</h4><p><a href="https://highlightjs.org/download/" target="_blank" rel="noopener">下载highlight</a></p>
+<pre><code class="html">&lt;!-- 引入css --&gt;
+&lt;head&gt;
+    &lt;%- css(&#39;/lib/highlight/styles/atom-one-dark&#39;) %&gt;
+&lt;/head&gt;
+&lt;!-- 引入js --&gt;
+&lt;%- js(&#39;/lib/highlight/highlight.pack.js&#39;) %&gt;
+&lt;!-- 使用 --&gt;
+&lt;script&gt;hljs.initHighlightingOnLoad();&lt;/script&gt;</code></pre>
 
 </div> 
         </div>
