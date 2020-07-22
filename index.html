@@ -60,27 +60,27 @@
                 
             </span> 
         </div>
-          <div class="article-content">
+        <div class="article-content">
                
               <h4 id="1-下载hexo"><a href="#1-下载hexo" class="headerlink" title="1. 下载hexo"></a>1. 下载hexo</h4><pre><code class="hash">$ npm i hexo-cli -g</code></pre>
 <h4 id="2-初始化项目"><a href="#2-初始化项目" class="headerlink" title="2. 初始化项目"></a>2. 初始化项目</h4><pre><code class="hash">$ hexo init &lt;folder&gt;
 $ cd &lt;folder&gt;
 $ npm install</code></pre>
 <h4 id="3-github创建-repositories"><a href="#3-github创建-repositories" class="headerlink" title="3. github创建 repositories"></a>3. github创建 repositories</h4 
-          </div> 
-          <div class="article-more">
-              <a href="/2020/07/08/steUp/index.html">
+        </div> 
+        <div class="article-more">
+            <a href="/2020/07/08/steUp/index.html">
                 <span style="color: blue;">
     more
     <i class="iconfont icon-more1" style="cursor: pointer;"></i>
 </span> 
-              </a>
-          </div> 
-          <div class="article-footer">
-              <a  href="/2020/07/08/steUp/index.html">
+            </a>
+        </div> 
+        <div class="article-footer">
+            <a  href="/2020/07/08/steUp/index.html">
               展开全文 >>
-              </a>
-          </div>
+            </a>
+        </div>
     </div>
  
     <div class="article">
@@ -93,7 +93,7 @@ $ npm install</code></pre>
                 
             </span> 
         </div>
-          <div class="article-content">
+        <div class="article-content">
                
               <h4 id="1-创建目录结构"><a href="#1-创建目录结构" class="headerlink" title="1. 创建目录结构"></a>1. 创建目录结构</h4><pre><code class="json">themes
  ┃
@@ -118,21 +118,101 @@ theme: themes name </code></pre>
 <li><p>a. 主要使用标签 </p>
 <ul>
 <li><code>&lt;%</code> 脚本标签，用于流程控制，无输出</li>
-<li><code>&lt;%__</code> 删除其前 
-          </div> 
-          <div class="article-more">
-              <a href="/2020/07/14/themes/index.html">
+<li><code>&lt;%__</code> 删除其 
+        </div> 
+        <div class="article-more">
+            <a href="/2020/07/14/themes/index.html">
                 <span style="color: blue;">
     more
     <i class="iconfont icon-more1" style="cursor: pointer;"></i>
 </span> 
-              </a>
-          </div> 
-          <div class="article-footer">
-              <a  href="/2020/07/14/themes/index.html">
+            </a>
+        </div> 
+        <div class="article-footer">
+            <a  href="/2020/07/14/themes/index.html">
               展开全文 >>
-              </a>
-          </div>
+            </a>
+        </div>
+    </div>
+ 
+    <div class="article">
+        <div class="article-header">
+            <h2>webpack </h2>
+             
+            <span class="article-date">
+                <i class="iconfont icon-rili"></i>
+                2020 7-15 
+                
+            </span> 
+        </div>
+        <div class="article-content">
+               
+              <h4 id="1-概念"><a href="#1-概念" class="headerlink" title="1. 概念"></a>1. 概念</h4><p>本质上，<code>webpack</code>是一个<code>javascript</code>应用程序的静态模块打包器。<br>当<code>webpack</code>处理应用程序时，递归地构建一个依赖关系图，其中包含应用程序的每个模块，打包成一个或多个<code>bundle</code>。</p>
+<h4 id="2-入口-entry"><a href="#2-入口-entry" class="headerlink" title="2.入口(entry)"></a>2.入口(entry)</h4><p>构建依赖的开始。进入入口起点后，<code>webpack</code>会找出哪些模块和库的直接或间接的依赖。<br>每个依赖项随即被处理，输出到<code>bundle</code>文件中。</p>
+<pre><code class="js">//单个入口
+module.exports = {
+    entry:{
+        main:&quot;src/main.js&quot;
+    }
+}</code></pre>
+<pre><code class="js">//单个入口简写
+module.exports = {
+    entry:&quot;src/main.js&quot;
+}</code></pre>
+<pre><code class="js">//多个入口
+module.exports = {
+    entry:{
+        entryChunkName1:&quot;src/a.js&quot;
+        entryChunkNam2:&quot;src/b.js&quot;
+    }
+}</code></pre>
+<h4 id="3-出口（output）"><a href="#3-出口（output）" class="headerlink" title="3. 出口（output）"></a>3. 出口（output）</h4><pre><code class="js">module.exports = {
+    output:{
+        filename:&#39;bundle.js&#39;, //输出文件名
+        path:&#39;/dist&#39;, //输出的绝对路径
+    }
+}</code></pre>
+<pre><code class="js">//配置多入口起点，多出口
+module.exports = {
+    entry:{
+        a:&#39;src/a.js&#39;,
+        b:&#39;src/b.js&#39;
+    },
+    output:{
+        filename:&#39;[name].js&#39;,
+        path:&#39;/dist&#39;
+    }
+} 
+//生成文件 dist/a.js dist/b.js</code></pre>
+<h4 id="4-mode"><a href="#4-mode" class="headerlink" title="4. mode"></a>4. mode</h4><pre><code class="js">module.exports = {
+    mode:&quot;development&quot; //production 二选一
+}</code></pre>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>development</td>
+<td>会将<code>process.env.NODE_ENV</code>的值设置为<code>development</code>。b<br/>启用<code>NamedChunksPlugin</code>和<code>NameModulesPlugin</code></td>
+</tr>
+< 
+        </div> 
+        <div class="article-more">
+            <a href="/2020/07/15/webpack/index.html">
+                <span style="color: blue;">
+    more
+    <i class="iconfont icon-more1" style="cursor: pointer;"></i>
+</span> 
+            </a>
+        </div> 
+        <div class="article-footer">
+            <a  href="/2020/07/15/webpack/index.html">
+              展开全文 >>
+            </a>
+        </div>
     </div>
   
         </div>

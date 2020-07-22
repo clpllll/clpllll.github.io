@@ -43,6 +43,29 @@ main{
     display: flex;
 }
 
+code{
+    font-size: 14px;
+    word-wrap: break-word;
+    padding: 2px 4px;
+    border-radius: 4px;
+    margin: 0 2px;
+    background-color: rgba(27,31,35,.02);
+    font-family: Operator Mono, Consolas, Monaco, Menlo, monospace;
+    word-break: break-all;
+    color: rgb(271,93,108);
+}
+
+blockquote {
+    padding: 5px 20px;
+    background-color: #fafafa;
+    border-left: 6px solid #e6e6e6;
+    word-break: break-word;
+    font-size: 16px;
+    font-weight: normal;
+    line-height: 30px;
+    margin: 0 0 20px;
+}
+
 aside{
     width: 300px;
     background-color: #fff;
@@ -51,6 +74,11 @@ aside{
     right: 0;
     bottom: 0;
     top: 0;
+}
+
+li{
+    padding-top: 4px;
+    padding-bottom: 4px ;
 }
 
 aside li, nav li{
@@ -112,7 +140,31 @@ aside li, nav li{
     padding: 0 10px;
 }
 
+.article_container{
+    display: flex;
+}
+
+.catalogue{
+    min-width: 200px;
+}
+
+.catalogue ol{
+    list-style: none;
+}
+
+.catalogue ol a{
+    color:#000;
+}
+
+.article_catalogue{
+    position: fixed;   
+    right: 50px;
+    top: 50px;
+}
+
+
 .article{
+    flex:1;
     padding: 5%;
     background-color: #fff;
     border-color: #d1d1d1;

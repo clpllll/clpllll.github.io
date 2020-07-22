@@ -38,6 +38,15 @@
                 </a>
             </li>
          
+            <li >
+                <a
+                    href="/2020/07/15/webpack/index.html" 
+                    style=
+                >
+                webpack 
+                </a>
+            </li>
+         
     </ul>
 </div> 
     </aside>
@@ -60,16 +69,16 @@
 </ul> 
         </nav>
         <div id="content">
-            <div class="article">
-    <div class="article-header">
-        <h2>搭建简单主题 </h2>
-         
-        <span class="article-date">
-            <i class="iconfont icon-rili"></i>
-            2020 7-14 
-        </span> 
-    </div>
-    <h4 id="1-创建目录结构"><a href="#1-创建目录结构" class="headerlink" title="1. 创建目录结构"></a>1. 创建目录结构</h4><pre><code class="json">themes
+            <div class="article_container">
+    <div class="article">
+        <div class="article-header">
+            <h2>搭建简单主题 </h2>
+            <span class="article-date">
+                <i class="iconfont icon-rili"></i>
+                2020-07-14 
+            </span> 
+        </div>
+        <h4 id="1-创建目录结构"><a href="#1-创建目录结构" class="headerlink" title="1. 创建目录结构"></a>1. 创建目录结构</h4><pre><code class="json">themes
  ┃
  ┖───themes name
         ┇
@@ -150,9 +159,9 @@ theme: themes name </code></pre>
 </tbody></table>
 <h4 id="5-资源文件夹"><a href="#5-资源文件夹" class="headerlink" title="5. 资源文件夹"></a>5. 资源文件夹</h4><p><code>source</code>文件夹中除了文章以外的所有资源，如图片、css、js等，<br>如图a.jpg在<code>images</code>中使用 <code>(/images/a.jpg)</code></p>
 <h4 id="6-字体图标"><a href="#6-字体图标" class="headerlink" title="6. 字体图标"></a>6. 字体图标</h4><p>图标库下载图标，放入source/lib。</p>
-<pre><code class="html">&lt;%- css(&#39;/lib/iconfont/iconfont.css&#39;) %&gt; </code></pre>
+<pre><code class="ejs">&lt;%- css(&#39;/lib/iconfont/iconfont.css&#39;) %&gt; </code></pre>
 <h4 id="7-引入highlight"><a href="#7-引入highlight" class="headerlink" title="7. 引入highlight"></a>7. 引入highlight</h4><p><a href="https://highlightjs.org/download/" target="_blank" rel="noopener">下载highlight</a></p>
-<pre><code class="html">&lt;!-- 引入css --&gt;
+<pre><code class="ejs">&lt;!-- 引入css --&gt;
 &lt;head&gt;
     &lt;%- css(&#39;/lib/highlight/styles/atom-one-dark&#39;) %&gt;
 &lt;/head&gt;
@@ -161,6 +170,12 @@ theme: themes name </code></pre>
 &lt;!-- 使用 --&gt;
 &lt;script&gt;hljs.initHighlightingOnLoad();&lt;/script&gt;</code></pre>
 
+    </div>
+    <div class="catalogue">
+        <div class="article_catalogue">
+            <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-创建目录结构"><span class="toc-text">1. 创建目录结构</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-改主题"><span class="toc-text">2.改主题</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-基础ejs语法"><span class="toc-text">3.基础ejs语法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-hexo-变量"><span class="toc-text">4. hexo 变量</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-资源文件夹"><span class="toc-text">5. 资源文件夹</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-字体图标"><span class="toc-text">6. 字体图标</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7-引入highlight"><span class="toc-text">7. 引入highlight</span></a></li></ol> 
+        </div>
+    </div>
 </div> 
         </div>
     </div>

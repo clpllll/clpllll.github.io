@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8">
+    
+<link rel="stylesheet" href="/css/main.css">
+
+    
+<link rel="stylesheet" href="/lib/highlight/styles/atom-one-dark.css">
+
+    
+<link rel="stylesheet" href="/lib/iconfont/iconfont.css">
+ 
+<meta name="generator" content="Hexo 4.2.1"></head>
+<body>
+<main>
+    <aside>
+         
+        <div class="aside">
+    <ul>
+         
+            <li >
+                <a
+                    href="/2020/07/08/steUp/index.html" 
+                    style=
+                >
+                hexo + gitbub搭建 
+                </a>
+            </li>
+         
+            <li >
+                <a
+                    href="/2020/07/14/themes/index.html" 
+                    style=
+                >
+                搭建简单主题 
+                </a>
+            </li>
+         
+            <li >
+                <a
+                    href="/2020/07/15/webpack/index.html" 
+                    style=color:blue
+                >
+                webpack 
+                </a>
+            </li>
+         
+    </ul>
+</div> 
+    </aside>
+    <div class="container">
+        <nav>
+            <ul class="menu">
+     
+        <li class="menu-item">
+            <a href="/ " class="menu-item-link">
+            主页 
+            </a>
+        </li>
+     
+        <li class="menu-item">
+            <a href="/about " class="menu-item-link">
+            随笔 
+            </a>
+        </li>
+     
+</ul> 
+        </nav>
+        <div id="content">
+            <div class="article_container">
+    <div class="article">
+        <div class="article-header">
+            <h2>Webpack </h2>
+            <span class="article-date">
+                <i class="iconfont icon-rili"></i>
+                2020-07-15 
+            </span> 
+        </div>
+        <h4 id="1-概念"><a href="#1-概念" class="headerlink" title="1. 概念"></a>1. 概念</h4><p>本质上，<code>webpack</code>是一个<code>javascript</code>应用程序的静态模块打包器。<br>当<code>webpack</code>处理应用程序时，递归地构建一个依赖关系图，其中包含应用程序的每个模块，打包成一个或多个<code>bundle</code>。</p>
+<h4 id="2-入口-entry"><a href="#2-入口-entry" class="headerlink" title="2.入口(entry)"></a>2.入口(entry)</h4><p>构建依赖的开始。进入入口起点后，<code>webpack</code>会找出哪些模块和库的直接或间接的依赖。<br>每个依赖项随即被处理，输出到<code>bundle</code>文件中。</p>
+<pre><code class="js">//单个入口
+module.exports = {
+    entry:{
+        main:&quot;src/main.js&quot;
+    }
+}</code></pre>
+<pre><code class="js">//单个入口简写
+module.exports = {
+    entry:&quot;src/main.js&quot;
+}</code></pre>
+<pre><code class="js">//多个入口
+module.exports = {
+    entry:{
+        entryChunkName1:&quot;src/a.js&quot;
+        entryChunkNam2:&quot;src/b.js&quot;
+    }
+}</code></pre>
+<h4 id="3-出口（output）"><a href="#3-出口（output）" class="headerlink" title="3. 出口（output）"></a>3. 出口（output）</h4><pre><code class="js">module.exports = {
+    output:{
+        filename:&#39;bundle.js&#39;, //输出文件名
+        path:&#39;/dist&#39;, //输出的绝对路径
+    }
+}</code></pre>
+<pre><code class="js">//配置多入口起点，多出口
+module.exports = {
+    entry:{
+        a:&#39;src/a.js&#39;,
+        b:&#39;src/b.js&#39;
+    },
+    output:{
+        filename:&#39;[name].js&#39;,
+        path:&#39;/dist&#39;
+    }
+} 
+//生成文件 dist/a.js dist/b.js</code></pre>
+<h4 id="4-mode"><a href="#4-mode" class="headerlink" title="4. mode"></a>4. mode</h4><pre><code class="js">module.exports = {
+    mode:&quot;development&quot; //production 二选一
+}</code></pre>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>development</td>
+<td>会将<code>process.env.NODE_ENV</code>的值设置为<code>development</code>。b<br/>启用<code>NamedChunksPlugin</code>和<code>NameModulesPlugin</code></td>
+</tr>
+<tr>
+<td>production</td>
+<td>会将<code>process.env.NODE_ENV</code>的值设置为<code>production</code>。<br/>启用:<br/><code>FlagDependencyUsagePlugin</code>，<br/><code>FlagIncludedChunksPlugin</code>，<br/><code>ModuleConcatenationPlugin</code>，<br/> <code>NoEmitOnErrorsPlugin</code>，<br/><code>OccurrenceOrderPlugin</code>，<br/> <code>SideEffectsFlagPlugin</code> <br/><code>UglifyJsPlugin</code></td>
+</tr>
+</tbody></table>
+<pre><code class="js">//配合mode production 压缩混淆代码 
+optimization:{
+    minimize:true
+}</code></pre>
+<blockquote>
+<p><code>flagIncludedChunks</code><br>page1调用page2，index调用page1，那么一目了然，在这里的chunks就是所有引用模块的id。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Asset</th>
+<th>Size</th>
+<th>Chunks</th>
+<th>Chunk</th>
+<th>Names</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>index.js</td>
+<td>1.08 KiB</td>
+<td>0, 1, 2</td>
+<td>[emitted]</td>
+<td>index</td>
+</tr>
+<tr>
+<td>page1.js</td>
+<td>1.01 KiB</td>
+<td>1, 2</td>
+<td>[emitted]</td>
+<td>page1</td>
+</tr>
+<tr>
+<td>page2.js</td>
+<td>971 bytes</td>
+<td>2</td>
+<td>[emitted]</td>
+<td>page2</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><code>OccurrenceOrderPlugin</code><br>作用是按照chunk引用次数来安排出现顺序，因为这让经常引用的模块和chunk拥有更小的id。将上面的例子加上这个配置运行下就是这样的</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Asset</th>
+<th>Size</th>
+<th>Chunks</th>
+<th>Chunk</th>
+<th>Names</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>page2.js</td>
+<td>971 bytes</td>
+<td>0</td>
+<td>[emitted]</td>
+<td>page2</td>
+</tr>
+<tr>
+<td>page1.js</td>
+<td>1.01 KiB</td>
+<td>1, 0</td>
+<td>[emitted]</td>
+<td>page1</td>
+</tr>
+<tr>
+<td>index.js</td>
+<td>1.08 KiB</td>
+<td>2, 0, 1</td>
+<td>[emitted]</td>
+<td>index</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th>name</th>
+<th>effect</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>FlagDependencyUsagePlugin</td>
+<td>标记没有用到的依赖，这个插件无法通过webpack获取，我只能通过强行导入webpack/lib下的class文件来导入。</td>
+</tr>
+<tr>
+<td>SideEffectsFlagPlugin</td>
+<td>用于处理tree shaking的,tree shaking，sideEffect这个插件的作用就是，如果当前的模块没有引用，而且package.json中的sideEffects为false，那么打包的时候就可以将此包剔除</td>
+</tr>
+<tr>
+<td>FlagIncludedChunksPlugin</td>
+<td>给当前chunk包含的chunkid加入chunk名之中</td>
+</tr>
+<tr>
+<td>ModuleConcatenationPlugin</td>
+<td>作用域提升</td>
+</tr>
+<tr>
+<td>NoEmitOnErrorsPlugin</td>
+<td>阻止任何报错，就算有错误也给我继续编译，很暴力的做法呢</td>
+</tr>
+<tr>
+<td>OccurrenceOrderPlugin</td>
+<td>按照调用次数来给chunks排序</td>
+</tr>
+<tr>
+<td>UglifyJsPlugin</td>
+<td>混淆压缩</td>
+</tr>
+</tbody></table>
+<h4 id="5-loader"><a href="#5-loader" class="headerlink" title="5. loader"></a>5. loader</h4><p>用于对模块的源码代码进行转换。使用<code>loader</code>告诉<code>webpack</code>如何处理对应文件。</p>
+<blockquote>
+<p>可以使在import或加载模块时预处理文件<br>可以将文件从不同的语言转出<code>javascript</code><br>或将内联图像转换为<code>data url</code><br><code>loader</code>允许直接在<code>Javascript</code>模块中<code>import css</code>文件</p>
+</blockquote>
+<p>使用loader三种方式：</p>
+<ul>
+<li>配置，在<code>webpack.config.js</code>中配置</li>
+<li>内联，在每个<code>import</code>指定<code>loader</code></li>
+<li>cli，在<code>shell</code>命令中指定</li>
+</ul>
+<pre><code class="js">//配置
+module.exports = {
+    module: {
+        rules: {
+            {
+                test:/\.css$/,
+                use:[
+                    &quot;style-loader&quot;,
+                    {
+                        loader:&quot;css-loader&quot;,
+                        options:{
+                            modules:true
+                        }
+                    }
+                ]
+            }
+        }
+    }
+}</code></pre>
+<p>loader特性：</p>
+<ul>
+<li>支持链式传递。相反的顺序执行，前一个loader返回的值给下一个loader。<code>[&#39;style-loader&#39;,&#39;css-loader&#39;]</code></li>
+<li>可以是同步的，也可以是异步的。</li>
+<li>loader运行在Node.js中</li>
+<li>接收参数，用于传递配置</li>
+<li>也可使用options对象进行配置</li>
+<li>插件可为loader带来更多特性</li>
+</ul>
+
+    </div>
+    <div class="catalogue">
+        <div class="article_catalogue">
+            <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-概念"><span class="toc-text">1. 概念</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-入口-entry"><span class="toc-text">2.入口(entry)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-出口（output）"><span class="toc-text">3. 出口（output）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-mode"><span class="toc-text">4. mode</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-loader"><span class="toc-text">5. loader</span></a></li></ol> 
+        </div>
+    </div>
+</div> 
+        </div>
+    </div>
+
+<script src="/js/main.js"></script>
+ 
+
+<script src="/lib/highlight/highlight.pack.js"></script>
+
+<script>hljs.initHighlightingOnLoad();</script>
+</main>
+</body>
+</html>
